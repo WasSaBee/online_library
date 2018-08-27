@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<package name="default" extends="struts-default,json-default" >
+	<action name="login" class="com.ol.action.userAction" method="login">
+		<result name="success">/success.jsp</result>
+		<result name="fail">/fail.jsp</result>
+		</action>
+	<action name="queryBook" class="com.ol.action.bookAction" method="queryAll">
+		<result>/showBook.jsp</result>
+	</action>
+			<action name="showBorrow" class="com.ol.action.bookAction" method="queryBook"><result>/borrow.jsp</result>
+		</action>
+		<action name="borrowOne" class="com.ol.action.bookAction" method="borrowOne"><result type='chain'>updateBorrow</result>
+		</action>
+		<action name="updateBorrow" class="com.ol.action.bookAction" method="updateBorrow"><result>/index.jsp
+		</result>
+		</action>
+		<action name="queryOne" class="com.ol.action.bookAction" method="queryOne"><result>/book.jsp</result>
+		</action>
+		<action name="rshowOne" class="com.ol.action.bookAction" method="rshowOne"><result>/return.jsp</result>
+		</action>
+		<action name="updateReturn" class="com.ol.action.bookAction" method="updateReturn"><result>/index.jsp</result>
+		</action>
+		<action name="rtOne" class="com.ol.action.bookAction" method="rtOne"><result type='chain'>updateReturn</result>
+		</action>
+		
+</package>
+</struts>    
